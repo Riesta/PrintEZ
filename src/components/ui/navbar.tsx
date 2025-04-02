@@ -18,14 +18,14 @@ const Navbar = () => {
           Contact
         </a>
       </div>
-      <div className="flex items-center gap-4">
+      {/* <div className="flex items-center gap-4">
         <a
           href="#"
           className="bg-blue-950 text-white px-4 py-2 rounded-sm font-semibold"
         >
           Login
         </a>
-      </div>
+      </div> */}
     </nav>
   );
 };
