@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import PrintForm from "../form/page";
 
 const PrintProcess = () => {
   const [step, setStep] = useState(1);
@@ -31,7 +32,7 @@ const PrintProcess = () => {
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">PrintEZ</h1>
 
-      <div className="flex">
+      <div className="flex flex-col items-center">
         {/* Sidebar Navigation */}
         <div className="w-1/4 bg-blue-900 text-white p-4">
           <div className={`py-2 ${step === 1 ? "font-bold" : ""}`}>
@@ -86,31 +87,7 @@ const PrintProcess = () => {
             </div>
           )}
 
-          {step === 2 && (
-            <div>
-              <h2 className="text-xl mb-2">Choose Drop-Off Time</h2>
-              <input
-                type="text"
-                placeholder="Drop-Off Location"
-                className="border p-2 w-full"
-              />
-              <input type="time" className="border p-2 w-full mt-2" />
-              <div className="flex gap-2 mt-4">
-                <button
-                  className="bg-gray-500 text-white p-2"
-                  onClick={() => setStep(1)}
-                >
-                  Back
-                </button>
-                <button
-                  className="bg-blue-500 text-white p-2"
-                  onClick={() => setStep(3)}
-                >
-                  Next
-                </button>
-              </div>
-            </div>
-          )}
+          {step === 2 && <PrintForm />}
 
           {step === 3 && (
             <div>
