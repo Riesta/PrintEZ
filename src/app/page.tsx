@@ -18,7 +18,7 @@ export default function Home() {
           </p>
           <div className="flex gap-4">
             <button className="bg-blue-950 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-900">
-              <a href="#">Coba Sekarang</a>
+              <a href="/print">Coba Sekarang</a>
             </button>
             {/* <button className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold">
               Telusuri Semua Alat PDF
