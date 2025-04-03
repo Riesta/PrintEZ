@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import PrintForm from "@/components/ui/printForm";
+import { Button } from "@/components/ui/button";
 
 const PrintProcess = () => {
   const [step, setStep] = useState(1);
@@ -34,7 +35,7 @@ const PrintProcess = () => {
 
       <div className="flex flex-col items-center">
         {/* Sidebar Navigation */}
-        <div className="w-2/4 flex flex-row justify-between bg-blue-900 text-white p-4">
+        <div className="w-2xl flex flex-row justify-between text-blue-950 p-4">
           <div className={`py-2 ${step === 1 ? "font-bold" : ""}`}>
             1. Unggah File
           </div>
@@ -47,9 +48,9 @@ const PrintProcess = () => {
         </div>
 
         {/* Step Content */}
-        <div className="w-3/4 p-4">
+        <div className="w-2xl p-4">
           {step === 1 && (
-            <div>
+            <div className="space-y-4">
               <h2 className="text-xl mb-2">Unggah filemu</h2>
               <input
                 type="file"
@@ -76,18 +77,13 @@ const PrintProcess = () => {
               ) : file ? (
                 <p className="mt-4 text-gray-600">{file.name}</p>
               ) : null}
-
-              <button
-                className="bg-blue-500 text-white p-2 mt-4"
-                disabled={!file}
-                onClick={() => setStep(2)}
-              >
-                Selanjutnya
-              </button>
+              <Button onClick={() => setStep(2)}>Selanjutnya</Button>
             </div>
           )}
 
-          {step === 2 && <PrintForm />}
+          {step === 2 && (
+            <PrintForm onNext={() => setStep(3)} onBack={() => setStep(1)} />
+          )}
 
           {step === 3 && (
             <div>

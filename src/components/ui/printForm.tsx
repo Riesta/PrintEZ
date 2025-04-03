@@ -70,7 +70,12 @@ const formSchema = z.object({
 const timeOptions = ["12:30", "13:00", "14:30", "15:00"]; // Pilihan waktu
 const placeOptions = ["Selasar FIK", "Smile Garden", "Masjid Manbaul Ulum"]; // Pilihan tempat
 
-const PrintForm = () => {
+type PrintFormProps = {
+  onNext: () => void; // Fungsi untuk pindah ke step 3
+  onBack: () => void;
+};
+
+const PrintForm: React.FC<PrintFormProps> = ({ onNext, onBack }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -278,7 +283,14 @@ const PrintForm = () => {
               )}
             />
 
-            <Button type="submit">Konfirmasi</Button>
+            <div className="flex gap-4">
+              <Button type="reset" onClick={onBack}>
+                Kembali
+              </Button>
+              <Button type="submit" onClick={onNext}>
+                Selanjutnya
+              </Button>
+            </div>
           </form>
         </Form>
       </div>
