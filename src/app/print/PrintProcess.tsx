@@ -34,15 +34,15 @@ const PrintProcess = () => {
 
       <div className="flex flex-col items-center">
         {/* Sidebar Navigation */}
-        <div className="w-1/4 bg-blue-900 text-white p-4">
+        <div className="w-2/4 flex flex-row justify-between bg-blue-900 text-white p-4">
           <div className={`py-2 ${step === 1 ? "font-bold" : ""}`}>
-            1. Upload File
+            1. Unggah File
           </div>
           <div className={`py-2 ${step === 2 ? "font-bold" : ""}`}>
-            2. Drop-Off Time
+            2. Form Pemesanan
           </div>
           <div className={`py-2 ${step === 3 ? "font-bold" : ""}`}>
-            3. Payment
+            3. Pembayaran
           </div>
         </div>
 
@@ -50,7 +50,7 @@ const PrintProcess = () => {
         <div className="w-3/4 p-4">
           {step === 1 && (
             <div>
-              <h2 className="text-xl mb-2">Upload Your File</h2>
+              <h2 className="text-xl mb-2">Unggah filemu</h2>
               <input
                 type="file"
                 onChange={handleFileUpload}
@@ -82,7 +82,7 @@ const PrintProcess = () => {
                 disabled={!file}
                 onClick={() => setStep(2)}
               >
-                Next
+                Selanjutnya
               </button>
             </div>
           )}
@@ -91,18 +91,18 @@ const PrintProcess = () => {
 
           {step === 3 && (
             <div>
-              <h2 className="text-xl mb-2">Payment</h2>
+              <h2 className="text-xl mb-2">Pembayaran</h2>
               <button
                 className="bg-green-500 text-white p-2"
                 onClick={() => alert("Payment Successful!")}
               >
-                Confirm Payment
+                KKonfirmasi Pembayaran
               </button>
               <button
                 className="bg-gray-500 text-white p-2 ml-2"
                 onClick={() => setStep(2)}
               >
-                Back
+                Kembali
               </button>
             </div>
           )}
