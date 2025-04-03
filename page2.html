@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintEz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col h-screen">
+    <!-- Progress Bar at the Top -->
+    <div class="w-full p-4 bg-white shadow-md">
+        <h2 class="sr-only">Steps</h2>
+        <div>
+            <div class="overflow-hidden rounded-full bg-gray-200">
+                <div class="h-2 w-1/2 rounded-full bg-blue-500"></div>
+            </div>
+            <ol class="mt-4 grid grid-cols-3 text-sm font-medium text-gray-500">
+                <li class="flex items-center justify-start text-blue-600 sm:gap-1.5">
+                    <span class="hidden sm:inline"> Upload Your File </span>
+                    <svg class="size-6 sm:size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+                    </svg>
+                </li>
+                <li class="flex items-center justify-center text-yellow-600 sm:gap-1.5">
+                    <span class="hidden sm:inline"> Address </span>
+                    <svg class="size-6 sm:size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </li>
+                <li class="flex items-center justify-end sm:gap-1.5">
+                    <span class="hidden sm:inline"> Payment </span>
+                    <svg class="size-6 sm:size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                </li>
+            </ol>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+<div class="flex-1 flex items-center justify-center bg-blue-100">
+    <form id="print-form" class="w-3/4 bg-white p-6 rounded-lg shadow-lg"   >
+        <div class="mb-4">
+            <label class="block text-gray-700 text-lg font-bold mb-2" for="name">Name</label>
+            <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-lg font-bold mb-2">Print Type</label>
+            <div class="flex items-center space-x-4">
+                <label class="inline-flex items-center">
+                    <input type="radio" name="printType" value="black" class="form-radio text-blue-500">
+                    <span class="ml-2">Black & White</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input type="radio" name="printType" value="colored" class="form-radio text-blue-500">
+                    <span class="ml-2">Colored</span>
+                </label>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-lg font-bold mb-2" for="dropoff-place">Drop-Off Place</label>
+            <select id="dropoff-place" name="dropoff-place" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="place1">Selasar FIK</option>
+                <option value="place2">Smile Garden</option>
+                <option value="place3">Masjid Manbaul Ulum</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-lg font-bold mb-2" for="dropoff-date">Drop-Off Date</label>
+            <input type="date" id="dropoff-date" name="dropoff-date" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-lg font-bold mb-2" for="dropoff-time">Drop-Off Time</label>
+            <select id="dropoff-time" name="dropoff-time" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="morning">08.00</option>
+                <option value="afternoon">12.00</option>
+                <option value="evening">15.00</option>
+            </select>
+        </div>
+        <div class="flex justify-center">
+            <button id="submit-button" type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-600">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
