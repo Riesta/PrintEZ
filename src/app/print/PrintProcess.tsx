@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import PrintForm from "../form/page";
+import PrintForm from "@/components/ui/printForm";
 
 const PrintProcess = () => {
   const [step, setStep] = useState(1);
