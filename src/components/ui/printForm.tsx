@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -69,6 +69,7 @@ const formSchema = z.object({
 
 const timeOptions = ["12:30", "13:00", "14:30", "15:00"]; // Pilihan waktu
 const placeOptions = ["Selasar FIK", "Smile Garden", "Masjid Manbaul Ulum"]; // Pilihan tempat
+const apiUrl = "http://localhost:5000/api/v1/form";
 
 type PrintFormProps = {
   onNext: () => void; // Fungsi untuk pindah ke step 3
@@ -87,8 +88,33 @@ const PrintForm: React.FC<PrintFormProps> = ({ onNext, onBack }) => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    debugger;
     console.log(values);
+    const { username, phoneNumber, type, place, dob, time } = values;
+    try {
+    // Send form data to the API
+    const response = await axios.post(apiUrl, {
+      username,
+      phoneNumber,
+      type,
+      place,
+      dob,
+      time,
+    });
+
+    // Handle successful response
+    const { data } = response;
+    console.log("Form submitted successfully:", data);
+    sessionStorage.setItem("idForm", data.data.id);
+    debugger;
+    onNext();
+  } catch (error) {
+    // Handle errors
+    console.error("Error submitting form:", error);
+    alert("Failed to submit form. Please try again.");
+  }
+    debugger;
   }
 
   return (
@@ -287,7 +313,8 @@ const PrintForm: React.FC<PrintFormProps> = ({ onNext, onBack }) => {
               <Button type="reset" onClick={onBack}>
                 Kembali
               </Button>
-              <Button type="submit" onClick={onNext}>
+              <Button type="submit">
+              {/* <Button type="submit" onClick={onNext}> */}
                 Selanjutnya
               </Button>
             </div>
