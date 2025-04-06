@@ -56,20 +56,12 @@ const PrintProcess = () => {
     formData.append("file", file);
 
     try {
-      const apiUrl = "http://localhost:5000/api/v1/upload";
-      const response = await axios.post(apiUrl, formData);
-
-      if (response && response.data && response.data.data) {
-        const fileData = response.data.data;
-        console.log(fileData);
-
-        sessionStorage.setItem("idfiles", fileData.id);
-        alert("File uploaded successfully!");
-        debugger;
-        // Optionally, redirect or update UI here
-      } else {
-        throw new Error("Unexpected response format.");
-      }
+      const apiUrl = "/api/v1/upload";
+      const {data:result} = await axios.post(apiUrl, formData);
+      const fileId = result.data.id;
+      console.log("File ID:", fileId);
+      sessionStorage.setItem("idFiles", fileId);
+      alert("File uploaded successfully!");
     } catch (error) {
       console.error("Error uploading file:", error);
       alert("Failed to upload file. Please try again later.");
@@ -77,26 +69,34 @@ const PrintProcess = () => {
   };
 
   const getPayment = async () => {
-    const idFiles = sessionStorage.getItem("idfiles");
+    const idFiles = sessionStorage.getItem("idFiles");
     const idForms = sessionStorage.getItem("idForm");
     if (!idFiles || !idForms) {
       alert("Mulai dari awal");
       return;
     }
     console.log(idFiles, idForms);
-    const apiUrl = "http://localhost:5000/api/v1/token";
-    const {data} = await axios.post(apiUrl, {
+    const apiUrl = "/api/v1/transaction";
+    const {data:result} = await axios.post(apiUrl, {
       idFiles,
       idForms,
     });
-    const token = data.token;
-    const transactionId = data.dataInsertTransaction?.id;
+    console.log("Data dari server:", result);
+    const data = result.data;
+    if (data.error) {
+      console.error("Error:", data.error);
+      alert("Terjadi kesalahan saat memproses pembayaran.");
+      return;
+    }
+    const token = data.midtrans_token;
+    const transactionId = data.id;
+    console.log("Token Midtrans:", token);
     if (!token) {
       throw new Error("Token Midtrans tidak ditemukan.");
     }
     const updateTransaction = async (status: string) => {
       try {
-        await axios.put("http://localhost:5000/api/v1/token", {
+        await axios.put(apiUrl, {
           idTransaction: transactionId,
           status,
         });
