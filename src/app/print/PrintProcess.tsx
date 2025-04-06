@@ -92,7 +92,7 @@ const PrintProcess = () => {
                 className="bg-green-500 text-white p-2"
                 onClick={() => alert("Payment Successful!")}
               >
-                KKonfirmasi Pembayaran
+                Konfirmasi Pembayaran
               </button>
               <button
                 className="bg-gray-500 text-white p-2 ml-2"
