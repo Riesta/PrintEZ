@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes slide-up {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-slide-up {
+        animation: slide-up 0.8s ease-out forwards;
+      }
+
+      @keyframes slide-left {
+        0% {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .animate-slide-left {
+        animation: slide-left 0.8s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- navbar -->
+    <nav
+      class="flex items-center justify-between px-16 shadow-md fixed top-0 left-0 right-0 bg-white z-10"
+    >
+      <div class="flex items-center gap-3">
+        <img src="src/PrintEz.svg" alt="logo" width="89" height="45" />
+      </div>
+      <div class="flex gap-8">
+        <a href="#" class="text-gray-600 hover:text-black">Tentang Kami</a>
+        <a href="#" class="text-gray-600 hover:text-black">Layanan</a>
+        <a href="#" class="text-gray-600 hover:text-black">Contact</a>
+      </div>
+    </nav>
+
+    <!-- main content -->
+    <main class="pt-32 px-8 md:px-16 text-center animate-slide-left">
+      <h1 class="text-4xl font-bold mb-12">Meet Our Team</h1>
+
+      <div class="flex flex-wrap justify-center gap-8">
+        <!-- Ares -->
+        <div class="w-44 sm:w-52 mt-0 group animate-slide-up">
+          <div
+            class="relative rounded-xl overflow-hidden shadow-md h-80 w-full"
+          >
+            <img
+              src="src/ares.png"
+              alt="Ares"
+              class="object-cover w-full h-full"
+            />
+            <div
+              class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+            >
+              <div class="text-white text-left p-4">
+                <p class="font-semibold">Muhammad Rizki Ramadhan Siregar</p>
+                <p class="text-sm">Project Officer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ridan -->
+        <div class="w-44 sm:w-52 mt-12 group animate-slide-up">
+          <div
+            class="relative rounded-xl overflow-hidden shadow-md h-80 w-full"
+          >
+            <img
+              src="src/ridan.png"
+              alt="Ridan"
+              class="object-cover w-full h-full"
+            />
+            <div
+              class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+            >
+              <div class="text-white text-left p-4">
+                <p class="font-semibold">Rizky Ramadan</p>
+                <p class="text-sm">Front-End Developer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seno -->
+        <div class="w-44 sm:w-52 mt-6 group animate-slide-up">
+          <div
+            class="relative rounded-xl overflow-hidden shadow-md h-80 w-full"
+          >
+            <img
+              src="src/seno.png"
+              alt="Seno"
+              class="object-cover w-full h-full"
+            />
+            <div
+              class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+            >
+              <div class="text-white text-left p-4">
+                <p class="font-semibold">Riyan Suseno</p>
+                <p class="text-sm">Back-End Developer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hekal -->
+        <div class="w-44 sm:w-52 mt-12 group animate-slide-up">
+          <div
+            class="relative rounded-xl overflow-hidden shadow-md h-80 w-full"
+          >
+            <img
+              src="src/hekal.jpg"
+              alt="Hekal"
+              class="object-cover w-full h-full"
+            />
+            <div
+              class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+            >
+              <div class="text-white text-left p-4">
+                <p class="font-semibold">Hayqal Salman Azrian</p>
+                <p class="text-sm">Back-End Developer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Iqbal -->
+        <div class="w-44 sm:w-52 mt-0 group animate-slide-up">
+          <div
+            class="relative rounded-xl overflow-hidden shadow-md h-80 w-full"
+          >
+            <img
+              src="src/iqbal.jpg"
+              alt="Iqbal"
+              class="object-cover w-full h-full"
+            />
+            <div
+              class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+            >
+              <div class="text-white text-left p-4">
+                <p class="font-semibold">Iqbal Fardhani Pohan</p>
+                <p class="text-sm">Front-End Developer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ini tolong diganti lagi, gua ga kepikiran apa yang harus ditaro di sini -->
+      <p
+        class="max-w-4xl mx-auto mt-12 text-gray-700 leading-relaxed animate-slide-left"
+      >
+        PrintEz adalah layanan cetak modern yang memudahkan mahasiswa untuk
+        mencetak dokumen dengan cepat, mudah, dan efisien melalui platform
+        online kami.
+      </p>
+    </main>
+  </body>
+</html>

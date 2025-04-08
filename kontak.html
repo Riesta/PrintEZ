@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes slide-up {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-slide-up {
+        animation: slide-up 0.8s ease-out forwards;
+      }
+
+      @keyframes slide-left {
+        0% {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .animate-slide-left {
+        animation: slide-left 0.8s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- navbar -->
+    <nav
+      class="flex items-center justify-between px-16 shadow-md fixed top-0 left-0 right-0 bg-white z-10"
+    >
+      <div class="flex items-center gap-3">
+        <img src="src/PrintEz.svg" alt="logo" width="89" height="45" />
+      </div>
+      <div class="flex gap-8">
+        <a href="#" class="text-gray-600 hover:text-black">Tentang Kami</a>
+        <a href="#" class="text-gray-600 hover:text-black">Layanan</a>
+        <a href="#" class="text-gray-600 hover:text-black">Contact</a>
+      </div>
+    </nav>
+
+    <!-- main content -->
+    <!-- JANGAN LUPA ITU DIISI PAKE LINK BENERAN, TERUS TULISANNYA GANTI -->
+    <main class="pt-32 px-8 md:px-16 text-center animate-slide-left">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold mb-2">
+          Jangan Ragu Untuk Menghubungi Kami
+        </h1>
+        <p class="text-gray-600 mb-12">Kami akan selalu siap membantu.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <!-- Card 1 -->
+          <div
+            class="bg-white rounded-lg p-6 shadow hover:shadow-md transition animate-slide-up"
+          >
+            <div class="mb-4 text-2xl">
+              <img
+                src="src/instagram-logo-240 (4).png"
+                alt="Instagram"
+                class="w-12 h-12 object-contain mx-auto"
+              />
+            </div>
+            <h2 class="font-semibold text-lg mb-1">Instagram</h2>
+            <p class="text-gray-600 text-sm mb-2">
+              Dapatkan update terbaru dari kami.
+            </p>
+            <a
+              href="link instagram"
+              class="text-blue-600 font-medium hover:underline"
+            >
+              username ig printez</a
+            >
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="bg-white rounded-lg p-6 shadow hover:shadow-md transition animate-slide-up"
+          >
+            <div class="mb-4 text-2xl">
+              <img
+                src="src/whatsapp-logo-240 (1).png"
+                alt="WhatsApp"
+                class="w-12 h-12 object-contain mx-auto"
+              />
+            </div>
+            <h2 class="font-semibold text-lg mb-1">WhatsApp</h2>
+            <p class="text-gray-600 text-sm mb-2">
+              Hubungi kami jika anda memiliki keluhan.
+            </p>
+            <a href="link wa" class="text-blue-600 font-medium hover:underline">
+              nomor wa
+            </a>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="bg-white rounded-lg p-6 shadow hover:shadow-md transition animate-slide-up"
+          >
+            <div class="mb-4 text-2xl">
+              <img
+                src="src/Line.png"
+                alt="Line"
+                class="w-12 h-12 object-contain mx-auto"
+              />
+            </div>
+            <h2 class="font-semibold text-lg mb-1">Line</h2>
+            <p class="text-gray-600 text-sm mb-2">
+              Hubungi kami, atau ikuti broadcastnya.
+            </p>
+            <a
+              href="link line"
+              class="text-blue-600 font-medium hover:underline"
+            >
+              line
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layanan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes slide-up {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-slide-up {
+        animation: slide-up 0.8s ease-out forwards;
+      }
+
+      @keyframes slide-left {
+        0% {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .animate-slide-left {
+        animation: slide-left 0.8s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- navbar -->
+    <nav
+      class="flex items-center justify-between px-16 shadow-md fixed top-0 left-0 right-0 bg-white z-10"
+    >
+      <div class="flex items-center gap-3">
+        <img src="src/PrintEz.svg" alt="logo" width="89" height="45" />
+      </div>
+      <div class="flex gap-8">
+        <a href="#" class="text-gray-600 hover:text-black">Tentang Kami</a>
+        <a href="#" class="text-gray-600 hover:text-black">Layanan</a>
+        <a href="#" class="text-gray-600 hover:text-black">Contact</a>
+      </div>
+    </nav>
+
+    <!-- main content -->
+    <!-- KALO CARD NYA MAU DIGANTI ISINYA SILAHKAN, GUA BINGUNG LAYANANYA APA AJA -->
+    <main class="pt-32 px-8 md:px-16 text-center animate-slide-left">
+      <h1 class="text-4xl font-bold mb-12">Layanan Kami</h1>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+        <!-- Card 1 -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-md text-left hover:shadow-lg transition animate-slide-up"
+        >
+          <img
+            src="src/file-pdf-solid-240.png"
+            alt="Icon"
+            class="w-12 h-12 mb-4"
+          />
+          <h2 class="text-xl font-semibold mb-2">Submit Dokumen Online</h2>
+          <p class="text-gray-600">
+            Submit dokumen anda melalui website kami, simpel dan praktis!
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-md text-left hover:shadow-lg transition animate-slide-up"
+        >
+          <img
+            src="src/color-fill-solid-240.png"
+            alt="Icon"
+            class="w-12 h-12 mb-4"
+          />
+          <h2 class="text-xl font-semibold mb-2">
+            Cetak Warna dan Hitam-Putih
+          </h2>
+          <p class="text-gray-600">Kami mengakomodir preferensi anda!</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-md text-left hover:shadow-lg transition animate-slide-up"
+        >
+          <img
+            src="src/package-regular-240.png"
+            alt="Icon"
+            class="w-12 h-12 mb-4"
+          />
+          <h2 class="text-xl font-semibold mb-2">
+            Ambil di Tempat yang Anda Inginkan
+          </h2>
+          <p class="text-gray-600">Pilih dari 3 lokasi pengambilan!</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-md text-left hover:shadow-lg transition animate-slide-up"
+        >
+          <img
+            src="src/wallet-alt-solid-240.png"
+            alt="Icon"
+            class="w-12 h-12 mb-4"
+          />
+          <h2 class="text-xl font-semibold mb-2">Pembayaran Secara Online</h2>
+          <p class="text-gray-600">
+            Pembayaran menjadi mudah, praktis, akurat dan aman!
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
