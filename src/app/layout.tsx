@@ -23,10 +23,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
-        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-B6hBtrqpHcqkDcse"></script>
-      </head>      
+        <script
+          src="https://app.sandbox.midtrans.com/snap/snap.js"
+          data-client-key="SB-Mid-client-B6hBtrqpHcqkDcse"
+        ></script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
