@@ -7,6 +7,8 @@ import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+import "boxicons/css/boxicons.min.css";
+
 import {
   Form,
   FormControl,
@@ -93,35 +95,49 @@ const PrintForm: React.FC<PrintFormProps> = ({ onNext, onBack }) => {
     console.log(values);
     const { username, phoneNumber, type, place, dob, time } = values;
     try {
-    // Send form data to the API
-    const {data} = await axios.post(apiUrl, {
-      username,
-      phoneNumber,
-      type,
-      place,
-      dob,
-      time,
-    });
+      // Send form data to the API
+      const { data } = await axios.post(apiUrl, {
+        username,
+        phoneNumber,
+        type,
+        place,
+        dob,
+        time,
+      });
 
-    // Handle successful response
-    console.log("Form submitted successfully:", data);
-    sessionStorage.setItem("idForm", data.dataInsert.id);
-    debugger;
-    onNext();
-  } catch (error) {
-    // Handle errors
-    console.error("Error submitting form:", error);
-    alert("Failed to submit form. Please try again.");
-  }
+      // Handle successful response
+      console.log("Form submitted successfully:", data);
+      sessionStorage.setItem("idForm", data.dataInsert.id);
+      debugger;
+      onNext();
+    } catch (error) {
+      // Handle errors
+      console.error("Error submitting form:", error);
+      alert("Failed to submit form. Please try again.");
+    }
     debugger;
   }
 
   return (
     <div className="flex-1 flex items-center justify-center">
       <div className="w-2xl bg-white p-6 rounded-lg shadow-lg">
-        <h1 className="text-2xl font-bold text-gray-900 mb-5">
-          Form Pemesanan
-        </h1>
+        <div className="flex justify-beetween">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900 mb-5 mr-auto">
+            Form Pemesanan
+          </h1>
+          <Button
+            type="reset"
+            onClick={onBack}
+            className="bg-white text-blue-950 shadow-none hover:bg-white"
+          >
+            <i className="bx bx-chevron-left text-lg" />
+            Kembali
+          </Button>
+        </div>
+        <h2 className="text-sm md:text-1xl text-gray-900 mb-5">
+          Lengkapi data anda untuk menyelesaikan pemesanan
+        </h2>
+
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
             {/* Input Username */}
@@ -260,9 +276,7 @@ const PrintForm: React.FC<PrintFormProps> = ({ onNext, onBack }) => {
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
-                        disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
-                        }
+                        disabled={(date) => date < new Date()}
                         initialFocus
                       />
                     </PopoverContent>
@@ -309,11 +323,8 @@ const PrintForm: React.FC<PrintFormProps> = ({ onNext, onBack }) => {
             />
 
             <div className="flex gap-4">
-              <Button type="reset" onClick={onBack}>
-                Kembali
-              </Button>
-              <Button type="submit">
-              {/* <Button type="submit" onClick={onNext}> */}
+              <Button type="submit" className="bg-blue-950">
+                {/* <Button type="submit" onClick={onNext}> */}
                 Selanjutnya
               </Button>
             </div>

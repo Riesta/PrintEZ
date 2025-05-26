@@ -4,13 +4,16 @@ import { useState } from "react";
 declare global {
   interface Window {
     snap: {
-      embed: (token: string, options: {
-        embedId: string;
-        onSuccess?: (result: any) => void;
-        onPending?: (result: any) => void;
-        onError?: (result: any) => void;
-        onClose?: () => void;
-      }) => void;
+      embed: (
+        token: string,
+        options: {
+          embedId: string;
+          onSuccess?: (result: any) => void;
+          onPending?: (result: any) => void;
+          onError?: (result: any) => void;
+          onClose?: () => void;
+        }
+      ) => void;
     };
   }
 }
@@ -45,7 +48,9 @@ const PrintProcess = () => {
   };
 
   const uploadFileToServer = async () => {
-    const fileInput = document.getElementById("file-upload") as HTMLInputElement;
+    const fileInput = document.getElementById(
+      "file-upload"
+    ) as HTMLInputElement;
     const file = fileInput?.files?.[0];
     if (!file) {
       alert("Please select a file to upload.");
@@ -57,7 +62,7 @@ const PrintProcess = () => {
 
     try {
       const apiUrl = "/api/v1/upload";
-      const {data:result} = await axios.post(apiUrl, formData);
+      const { data: result } = await axios.post(apiUrl, formData);
       const fileId = result.data.id;
       console.log("File ID:", fileId);
       sessionStorage.setItem("idFiles", fileId);
@@ -77,7 +82,7 @@ const PrintProcess = () => {
     }
     console.log(idFiles, idForms);
     const apiUrl = "/api/v1/transaction";
-    const {data:result} = await axios.post(apiUrl, {
+    const { data: result } = await axios.post(apiUrl, {
       idFiles,
       idForms,
     });
@@ -107,17 +112,17 @@ const PrintProcess = () => {
     };
     window.snap.embed(token, {
       embedId: "snap-embed-container",
-      onSuccess: async (result:any) => {
+      onSuccess: async (result: any) => {
         await updateTransaction("paid");
         console.log("Pembayaran berhasil:", result);
         alert("Pembayaran berhasil!");
         sessionStorage.clear();
       },
-      onPending: (result:any) => {
+      onPending: (result: any) => {
         console.log("Menunggu pembayaran:", result);
         alert("Pembayaran masih dalam proses.");
       },
-      onError: (result:any) => {
+      onError: (result: any) => {
         console.error("Pembayaran gagal:", result);
         alert("Pembayaran gagal. Silakan coba lagi.");
       },
@@ -126,32 +131,70 @@ const PrintProcess = () => {
         alert("Anda belum menyelesaikan pembayaran.");
       },
     });
-  }
+  };
   return (
-    <div className="p-8">
+    <div className="mt-4">
       <h1 className="text-2xl font-bold mb-4">PrintEZ</h1>
 
       <div className="flex flex-col items-center">
         {/* Sidebar Navigation */}
-        <div className="w-2xl flex flex-row justify-between text-blue-950 p-4">
-          <div className={`py-2 ${step === 1 ? "font-bold" : ""}`}>
-            1. Unggah File
+        {/* Versi Mobile (hanya step aktif) */}
+        <div className="w-full flex md:hidden justify-center text-blue-950 p-4">
+          {step === 1 && (
+            <div className="flex items-center py-2 font-bold">
+              <i className="bx bx-cloud-upload text-lg mr-2"></i>
+              Unggah File
+            </div>
+          )}
+          {step === 2 && (
+            <div className="flex items-center py-2 font-bold">
+              <i className="bx bx-spreadsheet text-lg mr-2"></i>
+              Form Pemesanan
+            </div>
+          )}
+          {step === 3 && (
+            <div className="flex items-center py-2 font-bold">
+              <i className="bx bx-wallet text-lg mr-2"></i>
+              Pembayaran
+            </div>
+          )}
+        </div>
+
+        {/* Versi Desktop (semua langkah) */}
+        <div className="w-full md:w-2xl hidden md:flex flex-row justify-between items-center text-blue-950 p-4">
+          <div
+            className={`flex items-center py-2 ${
+              step === 1 ? "font-bold" : ""
+            }`}
+          >
+            <i className="bx bx-cloud-upload text-lg mr-2"></i>
+            Unggah File
           </div>
-          <div className={`py-2 ${step === 2 ? "font-bold" : ""}`}>
-            2. Form Pemesanan
+          <div
+            className={`flex items-center py-2 ${
+              step === 2 ? "font-bold" : ""
+            }`}
+          >
+            <i className="bx bx-spreadsheet text-lg mr-2"></i>
+            Form Pemesanan
           </div>
-          <div className={`py-2 ${step === 3 ? "font-bold" : ""}`}>
-            3. Pembayaran
+          <div
+            className={`flex items-center py-2 ${
+              step === 3 ? "font-bold" : ""
+            }`}
+          >
+            <i className="bx bx-wallet text-lg mr-2"></i>
+            Pembayaran
           </div>
         </div>
 
         {/* Step Content */}
-        <div className="w-2xl p-4">
+        <div className="w-full md:w-2xl p-4">
           {step === 1 && (
             <div className="space-y-4">
-              <h2 className="text-xl mb-2">Unggah filemu</h2>
+              <h2 className="text-xl mb-2">Unggah Filemu</h2>
               <input
-                id ="file-upload"
+                id="file-upload"
                 type="file"
                 onChange={handleFileUpload}
                 className="border p-2 w-full"
@@ -176,7 +219,18 @@ const PrintProcess = () => {
               ) : file ? (
                 <p className="mt-4 text-gray-600">{file.name}</p>
               ) : null}
-              <Button onClick={async() => {await uploadFileToServer();setStep(2)}}>Selanjutnya</Button>
+              {/* Tampilkan tombol jika file sudah dipilih */}
+              {file && (
+                <Button
+                  className="bg-blue-950"
+                  onClick={async () => {
+                    await uploadFileToServer();
+                    setStep(2);
+                  }}
+                >
+                  Selanjutnya
+                </Button>
+              )}
             </div>
           )}
 
@@ -185,22 +239,32 @@ const PrintProcess = () => {
           )}
 
           {step === 3 && (
-            <div>
-              <h2 className="text-xl mb-2">Pembayaran</h2>
-              <button
-                className="bg-green-500 text-white p-2"
-                //onClick={() => alert("Payment Successful!")}
-                onClick={async() => {await getPayment()}}
-              >
-                Konfirmasi Pembayaran
-              </button>
-              <button
-                className="bg-gray-500 text-white p-2 ml-2"
-                onClick={() => setStep(2)}
-              >
-                Kembali
-              </button>
-              <div id="snap-embed-container" className="mt-4 w-full h-full"></div>
+            <div className="w-2xl bg-white p-6 rounded-lg shadow-lg">
+              <h2 className="text-2xl font-bold text-gray-900 mb-5">
+                Pembayaran
+              </h2>
+
+              <div id="detailPesanan"></div>
+
+              <div className="flex gap-4">
+                <Button
+                  className="bg-blue-950" //onClick={() => alert("Payment Successful!")}
+                  onClick={async () => {
+                    await getPayment();
+                  }}
+                >
+                  Konfirmasi Pembayaran
+                </Button>
+
+                <Button className="bg-blue-950" onClick={() => setStep(2)}>
+                  Kembali
+                </Button>
+              </div>
+
+              <div
+                id="snap-embed-container"
+                className="mt-4 w-full h-full"
+              ></div>
             </div>
           )}
         </div>
